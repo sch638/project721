@@ -3,139 +3,177 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>721 Phippen Waiters Rd</title>
+<title>721 Phippen Waiter Rd</title>
 
 <style>
-
 body{
-margin:0;
-font-family:Arial, Helvetica, sans-serif;
-background:#f5f5f5;
-color:#333;
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:#f5f5f5;
+  color:#333;
 }
 
 .hero{
-background:url('imagen1.jpg') center/cover no-repeat;
-height:60vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-color:white;
+  position:relative;
+  height:60vh;
+  overflow:hidden;
+}
+
+.hero img{
+  width:100%;
+  height:60vh;
+  object-fit:cover;
+  position:absolute;
+  top:0;
+  left:0;
+  opacity:0;
+  transition:opacity 1s ease-in-out;
 }
 
 .hero-overlay{
-background:rgba(0,0,0,0.5);
-padding:40px;
-border-radius:10px;
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:60vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:white;
+  background:rgba(0,0,0,0.4);
+  padding:20px;
+  z-index:2;
 }
 
 h1{
-font-size:42px;
-margin:0;
+  font-size:42px;
+  margin:0;
 }
 
 h2{
-font-size:28px;
-margin-top:10px;
+  font-size:28px;
+  margin-top:10px;
 }
 
 .subtitle{
-font-size:20px;
-margin-top:10px;
+  font-size:20px;
+  margin-top:10px;
 }
 
 .container{
-max-width:1000px;
-margin:auto;
-padding:40px 20px;
-text-align:center;
-background:white;
+  max-width:1000px;
+  margin:auto;
+  padding:40px 20px;
+  text-align:center;
+  background:white;
 }
 
 .gallery img{
-width:100%;
-max-width:450px;
-margin:15px;
-border-radius:10px;
-box-shadow:0 4px 12px rgba(0,0,0,0.2);
+  width:100%;
+  max-width:300px;
+  margin:15px;
+  border-radius:10px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.2);
 }
 
 .buttons{
-margin-top:30px;
+  margin-top:30px;
 }
 
 .button{
-display:inline-block;
-padding:15px 30px;
-margin:10px;
-font-size:18px;
-text-decoration:none;
-color:white;
-border-radius:8px;
+  display:inline-block;
+  padding:15px 30px;
+  margin:10px;
+  font-size:18px;
+  text-decoration:none;
+  color:white;
+  border-radius:8px;
 }
 
 .whatsapp{
-background:#25D366;
+  background:#25D366;
 }
 
 .email{
-background:#007BFF;
+  background:#007BFF;
 }
 
 .button:hover{
-opacity:0.9;
+  opacity:0.9;
 }
 
 .footer{
-margin-top:40px;
-font-size:14px;
-color:#777;
+  margin-top:40px;
+  font-size:14px;
+  color:#777;
 }
 
+@media(max-width:600px){
+  .gallery img{
+    max-width:90%;
+  }
+}
 </style>
 </head>
 
 <body>
 
 <div class="hero">
-<div class="hero-overlay">
-
-<h2>Real Estate Project</h2>
-<h1>721 Phippen Waiters Rd</h1>
-<div class="subtitle">Multifamily – 4 Units</div>
-
-</div>
+  <img src="front.png" alt="Front View" class="slide">
+  <img src="side.png" alt="Side View" class="slide">
+  <img src="3D.png" alt="3D Render" class="slide">
+  
+  <div class="hero-overlay">
+    <h2>Real Estate Project</h2>
+    <h1>721 Phippen Waiter Rd</h1>
+    <div class="subtitle">Multifamily – 4 Units</div>
+  </div>
 </div>
 
 <div class="container">
+  <h2>Project Gallery</h2>
+  <div class="gallery">
+    <img src="front.png" alt="Front View">
+    <img src="side.png" alt="Side View">
+    <img src="3D.png" alt="3D Render">
+  </div>
 
-<h2>Project Gallery</h2>
+  <div class="buttons">
+    <a class="button whatsapp" href="https://wa.me/17869064017">
+      Contact via WhatsApp
+    </a>
+    <a class="button email" href="mailto:sch638@yahoo.com">
+      Send Email
+    </a>
+  </div>
 
-<div class="gallery">
-
-<img src="imagen1.JPEG">
-<img src="imagen2.JPEG">
-
+  <div class="footer">
+    For project information please contact us
+  </div>
 </div>
 
-<div class="buttons">
+<script>
+// Hero Image Slider
+let slides = document.querySelectorAll('.hero .slide');
+let current = 0;
 
-<a class="button whatsapp" href="https://wa.me/17869064017">
-Contact via WhatsApp
-</a>
+function showSlide(index){
+  slides.forEach((img,i)=>{
+    img.style.opacity = (i===index)? '1':'0';
+  });
+}
 
-<a class="button email" href="mailto:sch638@yahoo.com">
-Send Email
-</a>
+function nextSlide(){
+  current = (current+1) % slides.length;
+  showSlide(current);
+}
 
-</div>
-
-<div class="footer">
-For project information please contact us
-</div>
-
-</div>
+// iniciar slider
+showSlide(current);
+setInterval(nextSlide, 3000); // cambia cada 3 segundos
+</script>
 
 </body>
 </html>
